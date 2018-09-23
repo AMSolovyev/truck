@@ -1,5 +1,5 @@
-0<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
     <meta charset="utf-8">
 	<title>Отображение загрузки самосвалов</title>
@@ -19,8 +19,8 @@
         <div class="row mb-2">
 
              <div class="col-md-12">
-                 <form class="form-inline action="/", method="post">{ % csrf_token %}
-                     <label> class="custom selec</label>
+                 <form class="form-inline" action="/" method="post">{% csrf_token %}
+                     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Модель:</label>
                       <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="truck_select">
                         <option selected value="all">Все</option>
                         {% for truck_model in truck_models %}
@@ -58,7 +58,7 @@
 
 
     <!-- Подключаем jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     
     <!-- Подключаем плагин Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
