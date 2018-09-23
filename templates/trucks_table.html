@@ -1,0 +1,70 @@
+0<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+	<title>Отображение загрузки самосвалов</title>
+	<!-- Подключаем Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+    <div class="container">
+
+      
+        <div class="row">
+              <div class="col-md-12">
+                  <h1> Отслеживание загрузки самосвалов</h1>
+              </div>
+        </div>
+
+        <div class="row mb-2">
+
+             <div class="col-md-12">
+                 <form class="form-inline action="/", method="post">{ % csrf_token %}
+                     <label> class="custom selec</label>
+                      <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="truck_select">
+                        <option selected value="all">Все</option>
+                        {% for truck_model in truck_models %}
+                            <option value="{{ truck_model.id }}">{{ truck_model.model_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary my-1">Применить</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table border="1" cellpadding="5">
+                    <tr>
+                        <td align="center">Бортовой номер</td>
+                        <td align="center">Модель</td>
+                        <td align="center">Максимальная грузоподъемность, тонн</td>
+                        <td align="center">Текущий вес, тонн</td>
+                        <td align="center">Перегруз, %</td>
+                    </tr>
+                    {% for truck in trucks %}
+                    <tr>
+                        <td align="center">{{ truck.onboard_number}}</td>
+                        <td align="center">{{ truck.truck_model }}</td>
+                        <td align="center">{{ truck.truck_model.max_weight }}</td>
+                        <td align="center">{{ truck.current_weight }}</td>
+                        <td align="center">{% if truck.overload %}{{ truck.overload }}{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+
+
+    <!-- Подключаем jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- Подключаем плагин Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+    <!-- Подключаем Bootstrap JS -->    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    </body>
+</html>
