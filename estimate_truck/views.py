@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.template import loader
-
 from .models import Truck, TruckModel
 
 
@@ -13,7 +11,6 @@ def trucks_table(request):
     else:
         trucks = Truck.objects.filter(truck_model=truck_select).all()
 
-    return render(request, 'truck/trucks_table.html', {
-            'trucks': trucks,
-            'truck_models': truck_models
-        })
+    return render(request, 'estimate_truck/trucks_table.html', {'trucks': trucks,
+                                                       'truck_models': truck_models
+                                                       })
