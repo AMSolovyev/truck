@@ -4,7 +4,7 @@ from django.template import loader
 from .models import Truck, TruckModel
 
 
-class trucks_table(request):
+def trucks_table(request):
     truck_select = request.POST.get('truck_select')
     truck_models = TruckModel.objects.all()
 
@@ -14,6 +14,6 @@ class trucks_table(request):
         trucks = Truck.objects.filter(truck_model=truck_select).all()
 
     return render(request, 'truck/trucks_table.html', {
-        'trucks': trucks,
-        'truck_models': truck_models
-    })
+            'trucks': trucks,
+            'truck_models': truck_models
+        })

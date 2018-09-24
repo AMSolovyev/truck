@@ -3,7 +3,7 @@ from django.db import models
 
 class TruckModel(models.Model):
     model_name = models.CharField(max_length=20)
-    max_weight = models.PositiveSmallIntegerField(default=100)
+    max_weight = models.PositiveSmallIntegerField(default=120)
 
     def __str__(self):
         return self.model_name
@@ -25,4 +25,4 @@ class Truck(models.Model):
             return None
 
     def __str__(self):
-    	return self.onboard_number
+        return self.onboard_number
